@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <h1>{{ title }}</h1>
+  </div>
 </template>
 
 <script>
@@ -11,6 +13,7 @@ export default {
   // **************************
   data() {
     return {
+      title: "BOOLFLIX",
       // **************************
       // FINE DATA E RETURN &
     };
@@ -34,6 +37,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@use "../style/partials//variables" as *;
-</style>
+<style lang="scss" scoped></style>
