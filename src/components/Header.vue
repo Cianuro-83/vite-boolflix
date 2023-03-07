@@ -12,6 +12,7 @@
 
 <script>
 import store from "../store";
+import axios from "axios";
 export default {
   components: {
     // **************************
@@ -28,6 +29,12 @@ export default {
   },
   // **************************
   computed: {
+    film() {
+      return this.store.film;
+    },
+    serieTV() {
+      return this.store.serieTv;
+    },
     // **************************
     // FINE COMPUTED
   },
@@ -39,18 +46,28 @@ export default {
   // **************************
   methods: {
     prendiFilm() {
-      const film = this.store.film;
       const serieTv = this.store.serieTv;
-      console.log("ecco i film", film);
+      const cerca = this.store.cerca;
+      const api_key = this.store.api_key;
+      //   console.log("ecco i film", film);
       console.log("e queste sono le serie tv", serieTv);
 
       axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=334a4b12c0bb527b7ae4435b92cde0a1&query=ritorno+al+futuro`
-        )
-        .then((response) => {
+        .get(`https://api.themoviedb.org/3/search/movie?`, {
+          params: {
+            api_key: this.store.api_key,
+            query: cerca,
+          },
+        })
+        .then((res) => {
           console.log(res);
           console.log(res.data);
+          this.store.film = res.data.results;
+          console.log("film nello store", this.store.film);
+          this.store.cerca = "";
+        })
+        .catch((error) => {
+          this.store.film = [];
         });
     },
     // **************************

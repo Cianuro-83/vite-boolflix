@@ -2,12 +2,19 @@
   <div>
     <Header />
   </div>
+  <ul>
+    <li v-for="film in this.store.film" :key="film.id">
+      <div>TITOLO: {{ film.title }}</div>
+      <div>TITOLO ORIGINALE: {{ film.original_title }}</div>
+      <div>LINGUA: {{ film.original_language }}</div>
+      <div>VOTO: {{ film.vote_average }}</div>
+    </li>
+  </ul>
 </template>
 
 <script>
 import Header from "./Header.vue";
 import store from "../store";
-import axios from "axios";
 export default {
   components: {
     Header,
@@ -40,27 +47,6 @@ export default {
   },
   // **************************
   methods: {
-    prendiFilm() {
-      const film = this.store.film;
-      const serieTv = this.store.serieTv;
-      const cerca = this.store.cerca;
-      console.log("ecco i film", film);
-      console.log("e queste sono le serie tv", serieTv);
-
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=334a4b12c0bb527b7ae4435b92cde0a1&query=`,
-          {
-            params: {
-              original_title: cerca,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        });
-    },
     // **************************
     // FINE METHODS
   },
