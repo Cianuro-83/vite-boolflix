@@ -52,8 +52,8 @@ export default {
   // **************************
   methods: {
     bandiera(language) {
-      if (language === "en") {
-        return "/flag/it.svg";
+      if (language === "it") {
+        return "/flag/it.png";
       }
     },
     // **************************
