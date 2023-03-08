@@ -48,8 +48,7 @@ export default {
     prendiFilm() {
       const serieTv = this.store.serieTv;
       const cerca = this.store.cerca;
-      const api_key = this.store.api_key;
-      //   console.log("ecco i film", film);
+
       console.log("e queste sono le serie tv", serieTv);
 
       axios
@@ -57,6 +56,7 @@ export default {
           params: {
             api_key: this.store.api_key,
             query: cerca,
+            language: this.store.language,
           },
         })
         .then((res) => {
@@ -77,4 +77,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+input {
+  line-height: 2rem;
+  width: 35%;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid currentColor;
+  font-weight: bolder;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+</style>

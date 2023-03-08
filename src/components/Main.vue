@@ -4,10 +4,13 @@
   </div>
   <ul>
     <li v-for="film in this.store.film" :key="film.id">
-      <div>TITOLO: {{ film.title }}</div>
-      <div>TITOLO ORIGINALE: {{ film.original_title }}</div>
-      <div>LINGUA: {{ film.original_language }}</div>
-      <div>VOTO: {{ film.vote_average }}</div>
+      <h3>TITOLO: {{ film.title }}</h3>
+      <h4>TITOLO ORIGINALE: {{ film.original_title }}</h4>
+      <p>
+        <img :src="bandiera(film.original_language)" alt="" />
+      </p>
+      <p>VOTO: {{ film.vote_average }}</p>
+      <p>DESCRIZIONE: {{ film.overview }}</p>
     </li>
   </ul>
 </template>
@@ -37,6 +40,7 @@ export default {
     serieTV() {
       return this.store.serieTv;
     },
+
     // **************************
     // FINE COMPUTED
   },
@@ -47,6 +51,11 @@ export default {
   },
   // **************************
   methods: {
+    bandiera(language) {
+      if (language === "en") {
+        return "/flag/it.svg";
+      }
+    },
     // **************************
     // FINE METHODS
   },
