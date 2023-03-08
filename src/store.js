@@ -6,6 +6,7 @@ const store = reactive({
   film: [],
   serieTV: [],
   cerca: "",
+  locandina: `https://image.tmdb.org/t/p/w342`,
 });
 
 export default store;

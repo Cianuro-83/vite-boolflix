@@ -1,5 +1,6 @@
 <template>
   <li>
+    <img :src="this.store.locandina + tvcard.poster_path" alt="`/vite.svg`" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ tvcard.name }}</h3>
     <h4>TITOLO ORIGINALE: {{ tvcard.original_name }}</h4>
