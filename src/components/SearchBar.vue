@@ -5,6 +5,7 @@
     placeholder="cerca il film che vuoi guardare"
     type="text"
   />
+  <button @click="prendiFilm" type="text">cerca</button>
 </template>
 
 <script>
@@ -84,5 +85,16 @@ input {
   font-weight: bolder;
   font-size: 15px;
   text-transform: uppercase;
+}
+button {
+  line-height: 2rem;
+  width: 80px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid currentColor;
+  font-weight: bolder;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 </style>
