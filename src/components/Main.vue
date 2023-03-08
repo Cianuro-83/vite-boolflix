@@ -4,6 +4,7 @@
   </div>
   <ul class="grid">
     <FilmCard v-for="film in this.store.film" :key="film.id" :filmcard="film" />
+    <TvCard v-for="tv in this.store.serieTV" :key="tv.id" :tvcard="tv" />
   </ul>
 </template>
 
@@ -11,10 +12,12 @@
 import Header from "./Header.vue";
 import store from "../store";
 import FilmCard from "./FilmCard.vue";
+import TvCard from "./TvCard.vue";
 export default {
   components: {
     Header,
     FilmCard,
+    TvCard,
     // **************************
     // FINE COMPONETS
   },

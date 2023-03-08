@@ -1,16 +1,16 @@
 <template>
   <li>
     <h3>TIPOLOGIA: {{ sezione }}</h3>
-    <h3>TITOLO: {{ filmcard.title }}</h3>
-    <h4>TITOLO ORIGINALE: {{ filmcard.original_title }}</h4>
+    <h3>TITOLO: {{ tvcard.name }}</h3>
+    <h4>TITOLO ORIGINALE: {{ tvcard.original_name }}</h4>
     <p>
       <img
-        :src="getFlag(filmcard.original_language)"
-        :alt="filmcard.original_language"
+        :src="getFlag(tvcard.original_language)"
+        :alt="tvcard.original_language"
       />
     </p>
-    <p>VOTO: {{ filmcard.vote_average }}</p>
-    <p>DESCRIZIONE: {{ filmcard.overview }}</p>
+    <p>VOTO: {{ tvcard.vote_average }}</p>
+    <p>DESCRIZIONE: {{ tvcard.overview }}</p>
   </li>
 </template>
 
@@ -18,7 +18,7 @@
 import store from "../store";
 export default {
   props: {
-    filmcard: {
+    tvcard: {
       type: Object,
       required: true,
     },
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       store,
-      sezione: "film",
+      sezione: "serie tv",
       // **************************
       // FINE DATA E RETURN &
     };

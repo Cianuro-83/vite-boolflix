@@ -48,7 +48,7 @@ export default {
       const cerca = this.store.cerca;
 
       console.log("e queste sono le serie tv", serieTv);
-      // cerca film
+      // chiamata per cercare i film
       axios
         .get(`https://api.themoviedb.org/3/search/movie?`, {
           params: {
@@ -67,25 +67,25 @@ export default {
         .catch((error) => {
           this.store.film = [];
         });
-      // // cerca serie tv
-      // axios
-      //   .get(`https://api.themoviedb.org/3/search/tv?`, {
-      //     params: {
-      //       api_key: this.store.api_key,
-      //       query: cerca,
-      //       language: this.store.language,
-      //     },
-      //   })
-      //   .then((res) => {
-      //     console.log(res);
-      //     console.log(res.data);
-      //     this.store.serieTV = res.data.results;
-      //     console.log("Serie tv nello store", this.store.serieTV);
-      //     // this.store.cerca = "";
-      //   })
-      //   .catch((error) => {
-      //     this.store.film = [];
-      //   });
+      // chiamata per cercare le serie tv
+      axios
+        .get(`https://api.themoviedb.org/3/search/tv?`, {
+          params: {
+            api_key: this.store.api_key,
+            query: cerca,
+            language: this.store.language,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+          this.store.serieTV = res.data.results;
+          console.log("Serie tv nello store", this.store.serieTV);
+          // this.store.cerca = "";
+        })
+        .catch((error) => {
+          this.store.serieTV = [];
+        });
     },
     // **************************
     // FINE METHODS
