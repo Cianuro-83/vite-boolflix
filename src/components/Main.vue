@@ -2,25 +2,19 @@
   <div>
     <Header />
   </div>
-  <ul>
-    <li v-for="film in this.store.film" :key="film.id">
-      <h3>TITOLO: {{ film.title }}</h3>
-      <h4>TITOLO ORIGINALE: {{ film.original_title }}</h4>
-      <p>
-        <img :src="bandiera(film.original_language)" alt="" />
-      </p>
-      <p>VOTO: {{ film.vote_average }}</p>
-      <p>DESCRIZIONE: {{ film.overview }}</p>
-    </li>
+  <ul class="grid">
+    <FilmCard v-for="film in this.store.film" :key="film.id" :filmcard="film" />
   </ul>
 </template>
 
 <script>
 import Header from "./Header.vue";
 import store from "../store";
+import FilmCard from "./FilmCard.vue";
 export default {
   components: {
     Header,
+    FilmCard,
     // **************************
     // FINE COMPONETS
   },
@@ -51,11 +45,6 @@ export default {
   },
   // **************************
   methods: {
-    bandiera(language) {
-      if (language === "it") {
-        return "/flag/it.png";
-      }
-    },
     // **************************
     // FINE METHODS
   },
@@ -63,4 +52,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+</style>

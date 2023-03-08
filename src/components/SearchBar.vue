@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
-  </div>
-  <SearchBar />
+  <input
+    @keyup.enter="prendiFilm"
+    v-model="store.cerca"
+    placeholder="cerca il film che vuoi guardare"
+    type="text"
+  />
 </template>
 
 <script>
 import store from "../store";
-import SearchBar from "./SearchBar.vue";
+import axios from "axios";
 export default {
   components: {
-    SearchBar,
     // **************************
     // FINE COMPONETS
   },
@@ -41,6 +42,31 @@ export default {
   },
   // **************************
   methods: {
+    prendiFilm() {
+      const serieTv = this.store.serieTv;
+      const cerca = this.store.cerca;
+
+      console.log("e queste sono le serie tv", serieTv);
+
+      axios
+        .get(`https://api.themoviedb.org/3/search/movie?`, {
+          params: {
+            api_key: this.store.api_key,
+            query: cerca,
+            language: this.store.language,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+          this.store.film = res.data.results;
+          console.log("film nello store", this.store.film);
+          this.store.cerca = "";
+        })
+        .catch((error) => {
+          this.store.film = [];
+        });
+    },
     // **************************
     // FINE METHODS
   },
