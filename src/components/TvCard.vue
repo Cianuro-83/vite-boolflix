@@ -2,7 +2,9 @@
   <li>
     <img :src="getLocandina(tvcard.poster_path)" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
-    <h3>TITOLO: {{ tvcard.name }}</h3>
+    <h3 :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
+      TITOLO: {{ tvcard.name }}
+    </h3>
     <h4>TITOLO ORIGINALE: {{ tvcard.original_name }}</h4>
     <p>
       <img
@@ -82,6 +84,7 @@ export default {
         return this.locandina + poster;
       }
     },
+    removeDuplicateTitle(tit, original) {},
     // **************************
     // FINE METHODS
   },
@@ -91,4 +94,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "../style/partials//variables" as *;
+.nascondi {
+  display: none;
+}
 </style>

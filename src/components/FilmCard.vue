@@ -3,7 +3,9 @@
     <img :src="getLocandina(filmcard.poster_path)" alt="" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ filmcard.title }}</h3>
-    <h4>TITOLO ORIGINALE: {{ filmcard.original_title }}</h4>
+    <h4 :class="filmcard.title === filmcard.original_title ? `nascondi` : ``">
+      TITOLO ORIGINALE: {{ filmcard.original_title }}
+    </h4>
     <p>
       <img
         :src="getFlag(filmcard.original_language)"
@@ -92,4 +94,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "../style/partials//variables" as *;
+.nascondi {
+  display: none;
+}
 </style>
