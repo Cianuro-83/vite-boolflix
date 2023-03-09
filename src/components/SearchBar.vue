@@ -1,11 +1,15 @@
 <template>
-  <input
-    @keyup.enter="prendiFilm"
-    v-model="store.cerca"
-    placeholder="cerca il film che vuoi guardare"
-    type="text"
-  />
-  <button @click="prendiFilm" type="text">cerca</button>
+  <div>
+    <input
+      @keyup.enter="prendiFilm"
+      v-model="store.cerca"
+      placeholder="cerca il film che vuoi guardare"
+      type="text"
+    />
+    <div>
+      <button @click="prendiFilm" type="text">cerca</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -97,23 +101,31 @@ export default {
 <style lang="scss" scoped>
 input {
   line-height: 2rem;
-  width: 35%;
+  font-weight: bold;
+  width: 360px;
   padding: 10px;
   border-radius: 15px;
   border: 2px solid currentColor;
   font-weight: bolder;
   font-size: 15px;
   text-transform: uppercase;
+  position: relative;
 }
 button {
-  line-height: 2rem;
-  width: 80px;
+  line-height: 1.2rem;
+  width: 60px;
   padding: 10px;
   border-radius: 15px;
-  border: 2px solid currentColor;
+  border: 2px solid red;
   font-weight: bolder;
   font-size: 12px;
   text-transform: uppercase;
   cursor: pointer;
+  position: absolute;
+  right: 419px;
+  top: 35px;
+  &:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
 }
 </style>

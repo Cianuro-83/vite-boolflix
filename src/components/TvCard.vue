@@ -1,6 +1,6 @@
 <template>
   <li>
-    <img :src="getLocandina(tvcard.poster_path)" />
+    <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ tvcard.name }}</h3>
     <h4 :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
@@ -12,7 +12,7 @@
         :alt="tvcard.original_language"
       />
     </p>
-    <p>VOTO: {{ provaStar(tvcard.vote_average) }}</p>
+    <!-- <p>VOTO: {{ verificaStar(tvcard.vote_average) }}</p> -->
     <img class="star" :src="getStar(tvcard.vote_average)" alt="" />
     <p :class="tvcard.overview ? `` : `nascondi`">
       DESCRIZIONE: {{ tvcard.overview }}
@@ -87,7 +87,7 @@ export default {
         return this.locandina + poster;
       }
     },
-    provaStar(voto) {
+    verificaStar(voto) {
       return Math.round(voto / 2);
     },
     getStar(voto) {
@@ -120,5 +120,8 @@ export default {
 }
 .star {
   width: 150px;
+}
+.locandina {
+  width: 300px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <li>
-    <img :src="getLocandina(filmcard.poster_path)" alt="" />
+    <img class="locandina" :src="getLocandina(filmcard.poster_path)" alt="" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ filmcard.title }}</h3>
     <h4 :class="filmcard.title === filmcard.original_title ? `nascondi` : ``">
@@ -12,7 +12,7 @@
         :alt="filmcard.original_language"
       />
     </p>
-    <p>VOTO: {{ provaStar(filmcard.vote_average) }}</p>
+    <!-- <p>VOTO: {{ verificaStar(filmcard.vote_average) }}</p> -->
     <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
     <p :class="filmcard.overview ? `` : `nascondi`">
       DESCRIZIONE: {{ filmcard.overview }}
@@ -87,7 +87,7 @@ export default {
         return this.locandina + poster;
       }
     },
-    provaStar(voto) {
+    verificaStar(voto) {
       return Math.round(voto / 2);
     },
     getStar(voto) {
@@ -120,5 +120,9 @@ export default {
 }
 .star {
   width: 150px;
+}
+.locandina {
+  width: 300px;
+  text-align: center;
 }
 </style>

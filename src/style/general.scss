@@ -6,9 +6,11 @@
 body {
   background-color: black;
   color: white;
-  padding: 30px;
+  // padding: 30px;
   width: 100%;
   height: 100vh;
+  overflow: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 a {
@@ -29,6 +31,7 @@ button {
 
 img {
   max-width: 100%;
+  display: block;
 }
 
 .container {
