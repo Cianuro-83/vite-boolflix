@@ -12,7 +12,8 @@
         :alt="filmcard.original_language"
       />
     </p>
-    <p>VOTO: {{ getStar(filmcard.vote_average) }}</p>
+    <p>VOTO: {{ provaStar(filmcard.vote_average) }}</p>
+    <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
     <p>DESCRIZIONE: {{ filmcard.overview }}</p>
   </li>
 </template>
@@ -84,10 +85,24 @@ export default {
         return this.locandina + poster;
       }
     },
-    getStar(voto) {
+    provaStar(voto) {
       return Math.round(voto / 2);
     },
-
+    getStar(voto) {
+      if (Math.round(voto / 2) === 5) {
+        return "/star/5stelle.png";
+      } else if (Math.round(voto / 2) === 4) {
+        return "/star/4stelle.png";
+      } else if (Math.round(voto / 2) === 3) {
+        return "/star/3stelle.png";
+      } else if (Math.round(voto / 2) === 2) {
+        return "/star/2stelle.png";
+      } else if (Math.round(voto / 2) === 1) {
+        return "/star/1stelle.png";
+      } else {
+        return "/star/0stelle.png";
+      }
+    },
     // **************************
     // FINE METHODS
   },
@@ -99,5 +114,8 @@ export default {
 @use "../style/partials//variables" as *;
 .nascondi {
   display: none;
+}
+.star {
+  width: 150px;
 }
 </style>
