@@ -1,21 +1,22 @@
 <template>
-  <div>
-    <Header />
+  <div class="main">
+    <ul class="grid">
+      <FilmCard
+        v-for="film in this.store.film"
+        :key="film.id"
+        :filmcard="film"
+      />
+      <TvCard v-for="tv in this.store.serieTV" :key="tv.id" :tvcard="tv" />
+    </ul>
   </div>
-  <ul class="grid">
-    <FilmCard v-for="film in this.store.film" :key="film.id" :filmcard="film" />
-    <TvCard v-for="tv in this.store.serieTV" :key="tv.id" :tvcard="tv" />
-  </ul>
 </template>
 
 <script>
-import Header from "./Header.vue";
 import store from "../store";
 import FilmCard from "./FilmCard.vue";
 import TvCard from "./TvCard.vue";
 export default {
   components: {
-    Header,
     FilmCard,
     TvCard,
     // **************************
@@ -58,7 +59,10 @@ export default {
 <style lang="scss" scoped>
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 40px;
+}
+.main {
+  padding: 250px 50px 20px 50px;
 }
 </style>

@@ -1,22 +1,26 @@
 <template>
   <li>
-    <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
-    <h3>TIPOLOGIA: {{ sezione }}</h3>
-    <h3>TITOLO: {{ tvcard.name }}</h3>
-    <h4 :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
-      TITOLO ORIGINALE: {{ tvcard.original_name }}
-    </h4>
-    <p>
-      <img
-        :src="getFlag(tvcard.original_language)"
-        :alt="tvcard.original_language"
-      />
-    </p>
-    <!-- <p>VOTO: {{ verificaStar(tvcard.vote_average) }}</p> -->
-    <img class="star" :src="getStar(tvcard.vote_average)" alt="" />
-    <p :class="tvcard.overview ? `` : `nascondi`">
-      DESCRIZIONE: {{ tvcard.overview }}
-    </p>
+    <div class="tv-card">
+      <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
+      <div class="card-info">
+        <h3>TIPOLOGIA: {{ sezione }}</h3>
+        <h3>TITOLO: {{ tvcard.name }}</h3>
+        <h4 :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
+          TITOLO ORIGINALE: {{ tvcard.original_name }}
+        </h4>
+        <p>
+          <img
+            :src="getFlag(tvcard.original_language)"
+            :alt="tvcard.original_language"
+          />
+        </p>
+        <!-- <p>VOTO: {{ verificaStar(tvcard.vote_average) }}</p> -->
+        <img class="star" :src="getStar(tvcard.vote_average)" alt="" />
+        <p :class="tvcard.overview ? `` : `nascondi`">
+          DESCRIZIONE: {{ tvcard.overview }}
+        </p>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -122,6 +126,28 @@ export default {
   width: 150px;
 }
 .locandina {
-  width: 300px;
+  width: 330px;
+  height: 500px;
+  text-align: center;
+  overflow: hidden;
+}
+.tv-card {
+  position: relative;
+  border: 2px solid greenyellow;
+  width: 330px;
+  height: 500px;
+  margin-bottom: 20px;
+}
+.card-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 327px;
+  height: 498px;
+  overflow-y: auto;
+  background-color: black;
+  padding: 25px;
 }
 </style>

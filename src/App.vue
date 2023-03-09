@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <Header />
+  </header>
   <div>
     <Main />
   </div>
@@ -6,8 +9,10 @@
 
 <script>
 import Main from "./components/Main.vue";
+import Header from "./components/Header.vue";
 export default {
   components: {
+    Header,
     Main,
     // **************************
     // FINE COMPONETS
@@ -40,4 +45,8 @@ export default {
 
 <style lang="scss">
 @use "./style/general.scss";
+header {
+  position: fixed;
+  z-index: 999;
+}
 </style>

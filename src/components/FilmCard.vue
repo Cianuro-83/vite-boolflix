@@ -1,22 +1,34 @@
 <template>
   <li>
-    <img class="locandina" :src="getLocandina(filmcard.poster_path)" alt="" />
-    <h3>TIPOLOGIA: {{ sezione }}</h3>
-    <h3>TITOLO: {{ filmcard.title }}</h3>
-    <h4 :class="filmcard.title === filmcard.original_title ? `nascondi` : ``">
-      TITOLO ORIGINALE: {{ filmcard.original_title }}
-    </h4>
-    <p>
-      <img
-        :src="getFlag(filmcard.original_language)"
-        :alt="filmcard.original_language"
-      />
-    </p>
-    <!-- <p>VOTO: {{ verificaStar(filmcard.vote_average) }}</p> -->
-    <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
-    <p :class="filmcard.overview ? `` : `nascondi`">
-      DESCRIZIONE: {{ filmcard.overview }}
-    </p>
+    <div class="film-card">
+      <div class="poster">
+        <img
+          class="locandina"
+          :src="getLocandina(filmcard.poster_path)"
+          alt=""
+        />
+      </div>
+      <div class="card-info">
+        <h3>TIPOLOGIA: {{ sezione }}</h3>
+        <h3>TITOLO: {{ filmcard.title }}</h3>
+        <h4
+          :class="filmcard.title === filmcard.original_title ? `nascondi` : ``"
+        >
+          TITOLO ORIGINALE: {{ filmcard.original_title }}
+        </h4>
+        <p>
+          <img
+            :src="getFlag(filmcard.original_language)"
+            :alt="filmcard.original_language"
+          />
+        </p>
+        <!-- <p>VOTO: {{ verificaStar(filmcard.vote_average) }}</p> -->
+        <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
+        <p :class="filmcard.overview ? `` : `nascondi`">
+          DESCRIZIONE: {{ filmcard.overview }}
+        </p>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -122,7 +134,44 @@ export default {
   width: 150px;
 }
 .locandina {
-  width: 300px;
+  width: 330px;
+  height: 500px;
   text-align: center;
+  overflow: hidden;
+}
+.film-card {
+  position: relative;
+  border: 2px solid greenyellow;
+  width: 330px;
+  height: 500px;
+  margin-bottom: 20px;
+}
+.poster {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 327px;
+  height: 498px;
+  overflow: hidden;
+  z-index: 10;
+}
+.poster:hover {
+  z-index: -1;
+}
+.card-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 327px;
+  height: 498px;
+  overflow-y: auto;
+  background-color: black;
+  padding: 25px;
+  z-index: 5;
+  display: block;
 }
 </style>
