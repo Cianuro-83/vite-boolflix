@@ -91,18 +91,19 @@ export default {
       return Math.round(voto / 2);
     },
     getStar(voto) {
-      if (Math.round(voto / 2) === 5) {
-        return "/star/5stelle.png";
-      } else if (Math.round(voto / 2) === 4) {
-        return "/star/4stelle.png";
-      } else if (Math.round(voto / 2) === 3) {
-        return "/star/3stelle.png";
-      } else if (Math.round(voto / 2) === 2) {
-        return "/star/2stelle.png";
-      } else if (Math.round(voto / 2) === 1) {
-        return "/star/1stelle.png";
-      } else {
-        return "/star/0stelle.png";
+      switch (Math.round(voto / 2)) {
+        case 5:
+          return "/star/5stelle.png";
+        case 4:
+          return "/star/4stelle.png";
+        case 3:
+          return "/star/3stelle.png";
+        case 2:
+          return "/star/2stelle.png";
+        case 1:
+          return "/star/1stelle.png";
+        case 0:
+          return "/star/0stelle.png";
       }
     },
     // **************************
