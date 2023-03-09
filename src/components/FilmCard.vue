@@ -14,7 +14,9 @@
     </p>
     <p>VOTO: {{ provaStar(filmcard.vote_average) }}</p>
     <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
-    <p>DESCRIZIONE: {{ filmcard.overview }}</p>
+    <p :class="filmcard.overview ? `` : `nascondi`">
+      DESCRIZIONE: {{ filmcard.overview }}
+    </p>
   </li>
 </template>
 
