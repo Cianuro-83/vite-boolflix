@@ -1,6 +1,6 @@
 <template>
   <li>
-    <img :src="this.store.locandina + filmcard.poster_path" alt="`/vite.svg`" />
+    <img :src="getLocandina(filmcard.poster_path)" alt="" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ filmcard.title }}</h3>
     <h4>TITOLO ORIGINALE: {{ filmcard.original_title }}</h4>
@@ -45,6 +45,9 @@ export default {
     serieTV() {
       return this.store.serieTv;
     },
+    locandina() {
+      return this.store.locandina;
+    },
 
     // **************************
     // FINE COMPUTED
@@ -70,6 +73,13 @@ export default {
           return "/flag/jp.png";
         case `us`:
           return "/flag/us.png";
+      }
+    },
+    getLocandina(poster) {
+      if (poster === null) {
+        return "/BOOLFLIX.jpg";
+      } else {
+        return this.locandina + poster;
       }
     },
 

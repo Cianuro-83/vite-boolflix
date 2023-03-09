@@ -1,6 +1,6 @@
 <template>
   <li>
-    <img :src="this.store.locandina + tvcard.poster_path" alt="`/vite.svg`" />
+    <img :src="getLocandina(tvcard.poster_path)" />
     <h3>TIPOLOGIA: {{ sezione }}</h3>
     <h3>TITOLO: {{ tvcard.name }}</h3>
     <h4>TITOLO ORIGINALE: {{ tvcard.original_name }}</h4>
@@ -33,6 +33,7 @@ export default {
     return {
       store,
       sezione: "serie tv",
+
       // **************************
       // FINE DATA E RETURN &
     };
@@ -44,6 +45,9 @@ export default {
     },
     serieTV() {
       return this.store.serieTv;
+    },
+    locandina() {
+      return this.store.locandina;
     },
     // **************************
     // FINE COMPUTED
@@ -69,6 +73,13 @@ export default {
           return "/flag/jp.png";
         case `us`:
           return "/flag/us.png";
+      }
+    },
+    getLocandina(poster) {
+      if (poster === null) {
+        return "/BOOLFLIX.jpg";
+      } else {
+        return this.locandina + poster;
       }
     },
     // **************************
