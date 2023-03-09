@@ -12,7 +12,7 @@
         :alt="filmcard.original_language"
       />
     </p>
-    <p>VOTO: {{ filmcard.vote_average }}</p>
+    <p>VOTO: {{ getStar(filmcard.vote_average) }}</p>
     <p>DESCRIZIONE: {{ filmcard.overview }}</p>
   </li>
 </template>
@@ -83,6 +83,9 @@ export default {
       } else {
         return this.locandina + poster;
       }
+    },
+    getStar(voto) {
+      return Math.round(voto / 2);
     },
 
     // **************************

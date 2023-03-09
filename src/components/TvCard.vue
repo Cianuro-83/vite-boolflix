@@ -12,7 +12,7 @@
         :alt="tvcard.original_language"
       />
     </p>
-    <p>VOTO: {{ tvcard.vote_average }}</p>
+    <p>VOTO: {{ getStar(tvcard.vote_average) }}</p>
     <p>DESCRIZIONE: {{ tvcard.overview }}</p>
   </li>
 </template>
@@ -84,7 +84,9 @@ export default {
         return this.locandina + poster;
       }
     },
-    removeDuplicateTitle(tit, original) {},
+    getStar(voto) {
+      return Math.round(voto / 2);
+    },
     // **************************
     // FINE METHODS
   },
