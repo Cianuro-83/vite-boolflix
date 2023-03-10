@@ -136,10 +136,10 @@ export default {
 }
 
 .locandina {
-  width: 330px;
-  height: 500px;
-  text-align: center;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ 
 }
 .star {
     width: 200px;
@@ -147,9 +147,13 @@ export default {
 }
 .film-card {
   position: relative;
-  width: 330px;
-  height: 500px;
+  aspect-ratio: 1/1.5;
   margin-bottom: 20px;
+  &:hover{
+    .card-info{
+      overflow:auto;
+    }
+  }
   
 }
 .poster {
@@ -158,14 +162,12 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  width: 327px;
-  height: 498px;
   overflow: hidden;
   z-index: 10;
   &:hover {
     transform: rotatey(180deg);
     backface-visibility: hidden;
-    transition: all 1.5s;
+    transition: all 1.5s; 
   }
 }
 .card-info {
@@ -174,9 +176,7 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  width: 327px;
-  height: 498px;
-  overflow-y: auto;
+  overflow: hidden;
   background-image: url("/card.jpg");
   background-position: center;
   background-size: cover;
@@ -184,7 +184,7 @@ export default {
   padding: 25px;
   display: block;
   &:hover {
-    z-index: 10;
+    z-index: 10;  
   }
   .tipologia{
     background-color: red;

@@ -133,16 +133,19 @@ export default {
   margin-bottom: 20px;
 }
 .locandina {
-  width: 330px;
-  height: 500px;
-  text-align: center;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .tv-card {
-  position: relative;
-  width: 330px;
-  height: 500px;
+   position: relative;
+  aspect-ratio: 1/1.5;
   margin-bottom: 20px;
+  &:hover{
+    .card-info{
+      overflow:auto;
+    }
+  }
 }
 .poster {
   position: absolute;
@@ -150,25 +153,21 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
-  width: 327px;
-  height: 498px;
   overflow: hidden;
   z-index: 10;
   &:hover {
     transform: rotatey(180deg);
     backface-visibility: hidden;
-    transition: all 1.5s;
+    transition: all 1.5s; 
   }
-}
+  }
 .card-info {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  width: 327px;
-  height: 498px;
-  overflow-y: auto;
+  overflow: hidden;
   background-image: url("/card.jpg");
   background-position: center;
   background-size: cover;
@@ -176,33 +175,33 @@ export default {
   padding: 25px;
   display: block;
   &:hover {
-    z-index: 10;
+    z-index: 10;  
   }
-  .tipologia {
-    background-color: blue;
+  .tipologia{
+    background-color: red;
     text-align: center;
     text-transform: uppercase;
-    color: white;
+    color: greenyellow;
     padding: 10px 20px;
     margin-bottom: 20px;
   }
-  .titolo,
-  .titolo-originale {
-    margin-bottom: 20px;
-    span {
+  .titolo, 
+  .titolo-originale{
+  margin-bottom: 20px;
+    span{
       font-weight: normal;
     }
-  }
-  .bandiera {
+  }  
+  .bandiera{
     width: 50px;
     margin-bottom: 20px;
   }
-  .valutazione {
+  .valutazione{
     margin-bottom: 20px;
     font-weight: bold;
     text-transform: uppercase;
-  }
-  .descrizione {
+   }
+   .descrizione{
     font-weight: bold;
     p {
       margin-top: 20px;
@@ -210,6 +209,6 @@ export default {
       text-align: justify;
       line-height: 1.5em;
     }
+   }
   }
-}
 </style>
