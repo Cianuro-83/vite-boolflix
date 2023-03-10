@@ -5,21 +5,25 @@
         <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
       </div>
       <div class="card-info">
-        <h3>TIPOLOGIA: {{ sezione }}</h3>
-        <h3>TITOLO: {{ tvcard.name }}</h3>
-        <h4 :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
-          TITOLO ORIGINALE: {{ tvcard.original_name }}
+        <h3 class="tipologia">categoria - {{ sezione }}</h3>
+        <h3 class="titolo">TITOLO: <span>{{ tvcard.name }}</span> </h3>
+        <h4 class="titolo-originale" :class="tvcard.name === tvcard.original_name ? `nascondi` : ``">
+          TITOLO ORIGINALE: <span>{{ tvcard.original_name }}</span>
         </h4>
-        <p>
-          <img
+        <p class="idioma">
+          <p class="lingua"></p>
+          <img class="bandiera"
             :src="getFlag(tvcard.original_language)"
             :alt="tvcard.original_language"
           />
         </p>
-        <!-- <p>VOTO: {{ verificaStar(tvcard.vote_average) }}</p> -->
-        <img class="star" :src="getStar(tvcard.vote_average)" alt="" />
-        <p :class="tvcard.overview ? `` : `nascondi`">
-          DESCRIZIONE: {{ tvcard.overview }}
+        <div class="voto">
+          <p class="valutazione">gradimento del pubblico</p>
+          <!-- <p>VOTO: {{ verificaStar(tvcard.vote_average) }}</p> -->
+          <img class="star" :src="getStar(tvcard.vote_average)" alt="" />
+        </div>
+        <p class="descrizione" :class="tvcard.overview ? `` : `nascondi`">
+          DESCRIZIONE: <p>{{ tvcard.overview }}</p>
         </p>
       </div>
     </div>
@@ -125,7 +129,8 @@ export default {
   display: none;
 }
 .star {
-  width: 150px;
+  width: 200px;
+  margin-bottom: 20px;
 }
 .locandina {
   width: 330px;
@@ -164,11 +169,47 @@ export default {
   width: 327px;
   height: 498px;
   overflow-y: auto;
-  background-color: black;
+  background-image: url("/card.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
   padding: 25px;
   display: block;
   &:hover {
     z-index: 10;
+  }
+  .tipologia {
+    background-color: blue;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
+  .titolo,
+  .titolo-originale {
+    margin-bottom: 20px;
+    span {
+      font-weight: normal;
+    }
+  }
+  .bandiera {
+    width: 50px;
+    margin-bottom: 20px;
+  }
+  .valutazione {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .descrizione {
+    font-weight: bold;
+    p {
+      margin-top: 20px;
+      font-weight: normal;
+      text-align: justify;
+      line-height: 1.5em;
+    }
   }
 }
 </style>

@@ -9,23 +9,27 @@
         />
       </div>
       <div class="card-info">
-        <h3>TIPOLOGIA: {{ sezione }}</h3>
-        <h3>TITOLO: {{ filmcard.title }}</h3>
-        <h4
+        <h3 class="tipologia">categoria - {{ sezione }}</h3>
+        <h3 class="titolo">TITOLO: <span>{{ filmcard.title }}</span></h3>
+        <h4 class="titolo-originale"
           :class="filmcard.title === filmcard.original_title ? `nascondi` : ``"
         >
-          TITOLO ORIGINALE: {{ filmcard.original_title }}
+          TITOLO ORIGINALE: <span>{{ filmcard.original_title }}</span>
         </h4>
-        <p>
-          <img
+        <p class="idioma">
+          <p class="lingua"></p>
+          <img class="bandiera"
             :src="getFlag(filmcard.original_language)"
             :alt="filmcard.original_language"
           />
         </p>
-        <!-- <p>VOTO: {{ verificaStar(filmcard.vote_average) }}</p> -->
-        <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
-        <p :class="filmcard.overview ? `` : `nascondi`">
-          DESCRIZIONE: {{ filmcard.overview }}
+        <div class="voto">
+          <p class="valutazione">gradimento del pubblico</p>
+          <!-- <p>VOTO: {{ verificaStar(filmcard.vote_average) }}</p> -->
+          <img class="star" :src="getStar(filmcard.vote_average)" alt="" />
+        </div>
+        <p class="descrizione" :class="filmcard.overview ? `` : `nascondi`">
+          DESCRIZIONE:  <p>{{ filmcard.overview }}</p>
         </p>
       </div>
     </div>
@@ -130,20 +134,23 @@ export default {
 .nascondi {
   display: none;
 }
-.star {
-  width: 150px;
-}
+
 .locandina {
   width: 330px;
   height: 500px;
   text-align: center;
   overflow: hidden;
 }
+.star {
+    width: 200px;
+    margin-bottom: 20px;
+}
 .film-card {
   position: relative;
   width: 330px;
   height: 500px;
   margin-bottom: 20px;
+  
 }
 .poster {
   position: absolute;
@@ -170,11 +177,48 @@ export default {
   width: 327px;
   height: 498px;
   overflow-y: auto;
-  background-color: black;
+  background-image: url("/card.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
   padding: 25px;
   display: block;
   &:hover {
     z-index: 10;
   }
-}
+  .tipologia{
+    background-color: red;
+    text-align: center;
+    text-transform: uppercase;
+    color: greenyellow;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
+  .titolo, 
+  .titolo-originale{
+  margin-bottom: 20px;
+    span{
+      font-weight: normal;
+    }
+  }  
+  .bandiera{
+    width: 50px;
+    margin-bottom: 20px;
+  }
+  .valutazione{
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+   }
+   .descrizione{
+    font-weight: bold;
+    p {
+      margin-top: 20px;
+      font-weight: normal;
+      text-align: justify;
+      line-height: 1.5em;
+    }
+   }
+  }
+
 </style>

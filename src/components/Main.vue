@@ -61,7 +61,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .main {
   padding: 250px 50px 20px 50px;
