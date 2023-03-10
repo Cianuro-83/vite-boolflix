@@ -141,7 +141,6 @@ export default {
 }
 .film-card {
   position: relative;
-  border: 2px solid greenyellow;
   width: 330px;
   height: 500px;
   margin-bottom: 20px;
@@ -156,9 +155,11 @@ export default {
   height: 498px;
   overflow: hidden;
   z-index: 10;
-}
-.poster:hover {
-  z-index: -1;
+  &:hover {
+    transform: rotatey(180deg);
+    backface-visibility: hidden;
+    transition: all 1.5s;
+  }
 }
 .card-info {
   position: absolute;
@@ -171,7 +172,9 @@ export default {
   overflow-y: auto;
   background-color: black;
   padding: 25px;
-  z-index: 5;
   display: block;
+  &:hover {
+    z-index: 10;
+  }
 }
 </style>

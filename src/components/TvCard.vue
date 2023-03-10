@@ -1,7 +1,9 @@
 <template>
   <li>
     <div class="tv-card">
-      <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
+      <div class="poster">
+        <img class="locandina" :src="getLocandina(tvcard.poster_path)" />
+      </div>
       <div class="card-info">
         <h3>TIPOLOGIA: {{ sezione }}</h3>
         <h3>TITOLO: {{ tvcard.name }}</h3>
@@ -133,10 +135,25 @@ export default {
 }
 .tv-card {
   position: relative;
-  border: 2px solid greenyellow;
   width: 330px;
   height: 500px;
   margin-bottom: 20px;
+}
+.poster {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 327px;
+  height: 498px;
+  overflow: hidden;
+  z-index: 10;
+  &:hover {
+    transform: rotatey(180deg);
+    backface-visibility: hidden;
+    transition: all 1.5s;
+  }
 }
 .card-info {
   position: absolute;
@@ -149,5 +166,9 @@ export default {
   overflow-y: auto;
   background-color: black;
   padding: 25px;
+  display: block;
+  &:hover {
+    z-index: 10;
+  }
 }
 </style>

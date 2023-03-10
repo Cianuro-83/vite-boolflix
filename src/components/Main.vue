@@ -58,9 +58,10 @@ export default {
 
 <style lang="scss" scoped>
 .grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 .main {
   padding: 250px 50px 20px 50px;
