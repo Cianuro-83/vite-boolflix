@@ -38,6 +38,7 @@
 
 <script>
 import store from "../store";
+import axios from "axios";
 export default {
   props: {
     filmcard: {
@@ -62,6 +63,10 @@ export default {
   computed: {
     film() {
       return this.store.film;
+    },
+    idFilm() {
+      console.log("ciao ",this.store.film.idFilm)
+      return this.store.film.idFilm
     },
     serieTV() {
       return this.store.serieTv;
@@ -122,6 +127,8 @@ export default {
           return "/star/0stelle.png";
       }
     },
+
+ 
     // **************************
     // FINE METHODS
   },

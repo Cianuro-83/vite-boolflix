@@ -34,6 +34,10 @@ export default {
     film() {
       return this.store.film;
     },
+    idFilm() {
+      console.log(this.store.film.id);
+      return this.store.film.id;
+    },
     serieTV() {
       return this.store.serieTv;
     },
@@ -41,11 +45,7 @@ export default {
     // FINE COMPUTED
   },
   // **************************
-  watch: {
-    // **************************
-    // FINE WATCH
-  },
-  // **************************
+
   methods: {
     prendiFilm() {
       const serieTv = this.store.serieTv;
@@ -65,6 +65,7 @@ export default {
           console.log(res);
           console.log(res.data);
           this.store.film = res.data.results;
+          this.store.idFilm = res.data.results.id;
           console.log("film nello store", this.store.film);
           // this.store.cerca = "";
         })

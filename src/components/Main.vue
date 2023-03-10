@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img :src="getHero()" />
+    <img class="hero" :src="getHero()" />
     <ul class="grid">
       <FilmCard
         v-for="film in this.store.film"
@@ -51,8 +51,7 @@ export default {
   // **************************
   methods: {
     getHero() {
-      if (this.store.film === [] && this.store.serieTv === []) {
-        console.log(`poi`, this.store.film);
+      if (this.store.film.length === 0 && this.store.serieTV.length === 0) {
         return "/herotrasparent.png";
       }
     },

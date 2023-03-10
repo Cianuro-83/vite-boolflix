@@ -68,11 +68,7 @@ export default {
     // FINE COMPUTED
   },
   // **************************
-  watch: {
-    // **************************
-    // FINE WATCH
-  },
-  // **************************
+ 
   methods: {
     getFlag(language) {
       switch (language) {
@@ -178,7 +174,7 @@ export default {
     z-index: 10;  
   }
   .tipologia{
-    background-color: red;
+    background-color:blue;
     text-align: center;
     text-transform: uppercase;
     color: greenyellow;
