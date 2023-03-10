@@ -10,6 +10,7 @@
 <script>
 import Main from "./components/Main.vue";
 import Header from "./components/Header.vue";
+
 export default {
   components: {
     Header,
@@ -48,5 +49,13 @@ export default {
 header {
   position: fixed;
   z-index: 999;
+}
+.hero {
+  margin: 0 auto;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  left: 0;
+  bottom: 80px;
 }
 </style>
